@@ -1,0 +1,79 @@
+{% render 'partials/head.liquid' %}
+{% render 'partials/nav.liquid' %}
+
+<main class="container">
+
+  <!-- Profiel header -->
+  <section class="profiel-header">
+    <h1>{{ golfer.name }}</h1>
+    <div class="hcp-stats">
+      <div class="stat">
+        <p class="stat-label">HCP</p>
+        <p class="stat-waarde">{{ golfer.handicap | round: 1 }}</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">Vorige</p>
+        <p class="stat-waarde">{{ golfer.previous_handicap | round: 1 }}</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">Verbetering</p>
+        <p class="stat-waarde">{{ golfer.improvement | round: 1 }}</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">Low</p>
+        <p class="stat-waarde">{{ golfer.low | round: 1 }}</p>
+      </div>
+      <div class="stat">
+        <p class="stat-label">Doel</p>
+        <p class="stat-waarde">{{ golfer.goal_target | round: 1 }}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recente rondes -->
+  <section class="rondes">
+    <h2>Recente rondes</h2>
+    <ul>
+      {% for ronde in rondes %}
+      <li class="ronde-item">
+        <p class="ronde-baan">{{ ronde.course }}</p>
+        {% comment %} dag-maand-jaar {% endcomment %}
+        <p class="ronde-datum">{{ ronde.date| date: "%d %B %Y"  }}</p>
+        <p class="ronde-diff">{{ ronde.differential | round: 1 }}</p>
+        <p class="ronde-type">{{ ronde.type }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!-- Doelen -->
+  <section class="doelen">
+    <h2>Doelen</h2>
+    <ul>
+      {% for milestone in milestones %}
+      <li class="doel-item">
+        <p>{{ milestone.title }}</p>
+        <p>{{ milestone.current }} / {{ milestone.target }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <!-- Ranking -->
+  <section class="ranking">
+    <h2>Ranking</h2>
+    {% for item in ranking %}
+    <div class="ranking-categorie">
+      <h3>{{ item.category }}</h3>
+      <ul>
+        {% for rank in item.rankings %}
+        <li>{{ rank.rank }}. {{ rank.name }} — {{ rank.value }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endfor %}
+  </section>
+
+</main>
+
+{% render 'partials/foot.liquid' %}

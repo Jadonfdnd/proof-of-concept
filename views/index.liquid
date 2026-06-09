@@ -1,0 +1,21 @@
+{% render 'partials/head.liquid' %}
+{% render 'partials/nav.liquid' %}
+
+<main>
+  <div class="container">
+    <h1>Golfers</h1>
+    <ul class="golfers-grid">
+      {% for golfer in golfers %}
+      <li class="golfer-kaart">
+        <a href="/golfer/{{ golfer.id }}">
+          <p class="golfer-naam">{{ golfer.name }}</p>
+          <p class="golfer-hcp">HCP {{ golfer.handicap }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</main>
+
+
+{% render 'partials/foot.liquid' %}
