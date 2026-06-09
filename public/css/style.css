@@ -1,0 +1,140 @@
+:root {
+  /* Kleuren */
+  --groen-900: hsl(150, 50%, 15%);
+  --groen-700: hsl(150, 45%, 25%);
+  --groen-500: hsl(150, 40%, 40%);
+  --groen-300: hsl(150, 35%, 60%);
+  --groen-100: hsl(150, 30%, 90%);
+
+  /* Neutrals */
+  --n-900: hsl(0, 0%, 10%);
+  --n-500: hsl(0, 0%, 50%);
+  --n-100: hsl(0, 0%, 95%);
+
+  /* Thema */
+  --bg: var(--n-100);
+  --tekst: var(--n-900);
+  --accent: hsl(45, 90%, 50%);
+
+  /* Misc */
+  --font: system-ui, sans-serif;
+  --r: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--tekst);
+}
+
+.container {
+  width: min(100% - 2rem, 600px);
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.golfers-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.golfer-kaart a {
+  display: block;
+  background: white;
+  border-radius: var(--r);
+  padding: 1.25rem;
+  text-decoration: none;
+  color: var(--tekst);
+  box-shadow: var(--shadow);
+  transition: transform 220ms ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.golfer-naam {
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.golfer-hcp {
+  color: var(--groen-500);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+
+/* Profiel header */
+.profiel-header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--n-100);
+}
+
+.hcp-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat {
+  background: white;
+  border-radius: var(--r);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.stat-label {
+  font-size: .75rem;
+  color: var(--n-500);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+
+.stat-waarde {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--groen-700);
+  margin-top: .25rem;
+}
+
+/* Rondes */
+.rondes, .doelen, .ranking {
+  margin-top: 2rem;
+}
+
+.rondes h2, .doelen h2, .ranking h2 {
+  margin-bottom: 1rem;
+}
+
+.rondes ul, .doelen ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.ronde-item, .doel-item {
+  background: white;
+  border-radius: var(--r);
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+}
+
+.ronde-baan { font-weight: 700; }
+.ronde-diff { color: var(--groen-500); font-weight: 700; }
