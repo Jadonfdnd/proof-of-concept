@@ -138,3 +138,106 @@ body {
 
 .ronde-baan { font-weight: 700; }
 .ronde-diff { color: var(--groen-500); font-weight: 700; }
+
+.rondes {
+    form{
+        padding: 1rem;
+        display:flex;
+        flex-direction: column;
+        gap: .5rem;
+        input{
+        border: solid 1px var(--n-500);    
+        border-radius: var(--r);
+        padding: 1rem;
+        }
+
+        input[type="checkbox"]{
+            background-color: blue;
+        }
+        button{
+            font-family: var(--font);
+            border-radius: var(--r);
+            background-color: #0E5363; 
+            color: var(--n-100);
+
+            &:hover{
+                background: var(--groen-500);
+            }
+        }
+       
+    }
+}
+
+/* Form enhancement open close hidden */
+#ronde-form.hidden {
+  display: none;
+}
+
+#ronde-form.open {
+  display: block;
+}
+
+/* Navbar hamburger */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background: var(--groen-900);
+  color: white;
+}
+
+.nav-logo {
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.hamburger {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background: var(--groen-900);
+  padding: 2rem;
+  z-index: 100;
+}
+
+.nav-menu.open {
+  display: block;
+}
+
+.nav-sluit {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.nav-menu a {
+  color: white;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+

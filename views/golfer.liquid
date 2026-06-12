@@ -31,21 +31,9 @@
   </section>
 
   <!-- Recente rondes -->
-  <section class="rondes">
-    <h2>Recente rondes</h2>
-    <ul>
-      {% for ronde in rondes %}
-      <li class="ronde-item">
-        <p class="ronde-baan">{{ ronde.course }}</p>
-        {% comment %} dag-maand-jaar {% endcomment %}
-        <p class="ronde-datum">{{ ronde.date| date: "%d %B %Y"  }}</p>
-        <p class="ronde-diff">{{ ronde.differential | round: 1 }}</p>
-        <p class="ronde-type">{{ ronde.type }}</p>
-      </li>
-      {% endfor %}
-    </ul>
-  </section>
-
+  {% comment %} data expliciet meegeven in partial aanroeping {% endcomment %}
+{% render 'partials/recente-rondes.liquid', rondes: rondes, golfer: golfer, status: status %}
+{{ status }}
   <!-- Doelen -->
   <section class="doelen">
     <h2>Doelen</h2>

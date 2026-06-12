@@ -1,0 +1,41 @@
+  <section class="rondes">
+    <h2>Recente rondes</h2>
+
+    <ul>
+      {% for ronde in rondes %}
+      <li class="ronde-item">
+        <p class="ronde-baan">{{ ronde.course }}</p>
+        {% comment %} dag-maand-jaar {% endcomment %}
+        <p class="ronde-datum">{{ ronde.date| date: "%d %B %Y"  }}</p>
+        <p class="ronde-diff">{{ ronde.differential | round: 1 }}</p>
+        <p class="ronde-type">{{ ronde.type }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% if status == 'success' %}
+      <p class="success-melding">Ronde succesvol toegevoegd!</p>
+    {% endif %}
+
+    {% if status == 'error' %}
+      <p class="error-melding">Er ging iets fout, probeer het opnieuw.</p>
+    {% endif %}    
+
+    <button class="btn-ronde" id="open-form">+ Ronde</button>
+    <form id="ronde-form" action="/golfer/{{ golfer.id }}/score" method="POST">
+        <label for="date">Datum</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="course">Baan</label>
+        <input type="text" id="course" name="course" required>
+
+        <label for="differential">Differential</label>
+        <input type="number" id="differential" name="differential" step="0.1" required>
+
+        <label for="type">
+            <input type="checkbox" id="type" name="type" value="QUAL">
+            Telt mee voor handicap (QUAL)
+        </label>
+        <a href="/golfer/{{ golfer.id }}" class="btn-annuleer">Annuleren</a>
+        <button type="submit">Ronde opslaan</button>
+    </form>
+  </section>
