@@ -4,29 +4,37 @@
 <main class="container">
 
   <!-- Profiel header -->
+  {% comment %} Divjes weghalen Ul Li {% endcomment %}
   <section class="profiel-header">
     <h1>{{ golfer.name }}</h1>
+
     <div class="hcp-stats">
+
       <div class="stat">
         <p class="stat-label">HCP</p>
         <p class="stat-waarde">{{ golfer.handicap | round: 1 }}</p>
       </div>
+
       <div class="stat">
         <p class="stat-label">Vorige</p>
         <p class="stat-waarde">{{ golfer.previous_handicap | round: 1 }}</p>
       </div>
+
       <div class="stat">
         <p class="stat-label">Verbetering</p>
         <p class="stat-waarde">{{ golfer.improvement | round: 1 }}</p>
       </div>
+
       <div class="stat">
         <p class="stat-label">Low</p>
         <p class="stat-waarde">{{ golfer.low | round: 1 }}</p>
       </div>
+
       <div class="stat">
         <p class="stat-label">Doel</p>
         <p class="stat-waarde">{{ golfer.goal_target | round: 1 }}</p>
       </div>
+      
     </div>
   </section>
 
@@ -55,7 +63,7 @@
       <h3>{{ item.category }}</h3>
       <ul>
         {% for rank in item.rankings %}
-        <li>{{ rank.rank }}. {{ rank.name }} — {{ rank.value }}</li>
+        <li>{{ rank.rank }}. {{ rank.name }} - {{ rank.value }}</li>
         {% endfor %}
       </ul>
     </div>

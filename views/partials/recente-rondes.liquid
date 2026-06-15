@@ -12,6 +12,7 @@
       </li>
       {% endfor %}
     </ul>
+    
     {% if status == 'success' %}
       <p class="success-melding">Ronde succesvol toegevoegd!</p>
     {% endif %}
@@ -22,18 +23,24 @@
 
     <button class="btn-ronde" id="open-form">+ Ronde</button>
     <form id="ronde-form" action="/golfer/{{ golfer.id }}/score" method="POST">
-        <label for="date">Datum</label>
+        <label for="date">
+        Datum
         <input type="date" id="date" name="date" required>
+        </label>
 
-        <label for="course">Baan</label>
+        <label for="course">
+        Baan
         <input type="text" id="course" name="course" required>
+        </label>
 
-        <label for="differential">Differential</label>
+        <label for="differential">
+        Differential
         <input type="number" id="differential" name="differential" step="0.1" required>
+        </label>
 
         <label for="type">
-            <input type="checkbox" id="type" name="type" value="QUAL">
-            Telt mee voor handicap (QUAL)
+        <input type="checkbox" id="type" name="type" value="QUAL">
+        Telt mee voor handicap (QUAL)
         </label>
         <a href="/golfer/{{ golfer.id }}" class="btn-annuleer">Annuleren</a>
         <button type="submit">Ronde opslaan</button>
