@@ -18,23 +18,23 @@ if (sluit) {
 
 // form add round: show and hide
 const addRound = document.querySelector('#open-form')
-const form = document.querySelector('#ronde-form')
+const overlay = document.querySelector('#modal-popover')
 const closeForm = document.querySelector('.btn-annuleer')
 
-if (form) {
-  form.classList.add('hidden')
+if (overlay) {
+  overlay.classList.add('hidden')
 }
 
-if (addRound) {
+if (addRound && overlay) {
   addRound.addEventListener('click', () => {
-    form.classList.remove('hidden')
-    form.classList.add('open')
+    overlay.classList.remove('hidden')
+    overlay.classList.add('open')
   })
 }
 
-if (closeForm) {
+if (closeForm && overlay) {
   closeForm.addEventListener('click', () => {
-    form.classList.remove('open')
-    form.classList.add('hidden')
+    overlay.classList.remove('open')
+    overlay.classList.add('hidden')
   })
 }

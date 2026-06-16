@@ -292,6 +292,50 @@ body {
   }
 }
 
+.rondes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.empty-state { /* error empty state*/
+  background: white;
+  border-radius: var(--r);
+  padding: 1.5rem;
+  color: var(--n-500);
+  text-align: center;
+}
+
+/* end recente rondes */
+
+
+/* popover */
+.modal-popover.hidden {
+  display: none;
+}
+
+.modal-popover{
+  margin-top: 1rem;
+}
+
+
+.modal-popover.open {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+
+  form {
+    max-width: 25rem;
+    width: 90%;
+  }
+}
+/* popover end; */
+
 .success-melding {
   background: var(--groen-100);
   border: 1px solid var(--groen-500);

@@ -73,7 +73,9 @@ app.get('/golfer/:id', async function (request, response) {
       rondes: rondesData.data,
       history: handicapData.data,
       milestones: milestonesData.data,
-      ranking: ranking
+      ranking: ranking,
+      status: status
+
     })
 
   } catch (error) {
