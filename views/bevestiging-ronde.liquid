@@ -1,0 +1,22 @@
+{% render 'partials/head.liquid' %}
+{% render 'partials/nav.liquid' %}
+
+<main class="container">
+  <section class="bevestig">
+    <h1>Ronde verwijderen</h1>
+    <p>Weet je zeker dat je deze ronde wilt verwijderen?</p>
+    <div class="ronde-item">
+      <p class="ronde-baan">{{ ronde.course }}</p>
+      <p class="ronde-datum">{{ ronde.date | date: "%d %B %Y" }}</p>
+      <p class="ronde-diff">{{ ronde.differential | round: 1 }}</p>
+    </div>
+    <div class="bevestig-acties">
+      <a href="/golfer/{{ golfer_id }}" class="btn-annuleer">Annuleren</a>
+      <form action="/golfer/{{ golfer_id }}/ronde/{{ ronde.id }}/delete" method="POST">
+        <button type="submit" class="btn-delete">Ja, verwijderen</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+{% render 'partials/foot.liquid' %}

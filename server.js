@@ -107,6 +107,40 @@ app.post('/golfer/:id/score', async function (req, res){
   }
 })
 
+
+//  DELETE RONDE
+app.post('/golfer/:id/ronde/:rondeId/delete', async function (req, res) {
+  const id = req.params.id
+  const rondeId = req.params.rondeId
+
+  try {
+    await fetch(`https://fdnd-agency.directus.app/items/into_golf_rounds/${rondeId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    })
+    res.redirect(303, `/golfer/${id}?status=deleted`)
+  } catch (error) {
+    console.error('Fout DELETE ronde:', error.message)
+    res.redirect(303, `/golfer/${id}?status=error`)
+  }
+})
+
+//   BEVESTIG DELETE zonder pe
+app.get('/golfer/:id/ronde/:rondeId/bevestiging-ronde', async function (req, res) {
+  const id = req.params.id
+  const rondeId = req.params.rondeId
+
+  const rondeResponse = await fetch(`https://fdnd-agency.directus.app/items/into_golf_rounds/${rondeId}`)
+  const rondeData = await rondeResponse.json()
+
+  res.render('bevestiging-ronde.liquid', {
+    golfer_id: id,
+    ronde: rondeData.data
+  })
+})
+// end delete
+
+
 // als laatst
 app.set("port", process.env.PORT || 8000);
 
