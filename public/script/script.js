@@ -40,31 +40,36 @@ if (closeForm && overlay) {
 }
 
 // Doel handicap met pe
-const doelForm = document.querySelector('#doel-form')
+const doelMin = document.querySelector('.doel-min')
+const doelPlus = document.querySelector('.doel-plus')
 const doelWaarde = document.querySelector('#doel-waarde')
-const doelInput = document.querySelector('#goal-target-input')
-const doelOpslaan = document.querySelector('#doel-opslaan')
-const doelMin = document.querySelector('#doel-min')
-const doelPlus = document.querySelector('#doel-plus')
 
-if (doelForm && doelOpslaan) {
-  // Enhancement: verberg opslaan knop
-  doelOpslaan.style.display = 'none'
+if (doelMin && doelPlus && doelWaarde) {
+  const golferId = doelMin.dataset.golferId
+  let huidigDoel = parseFloat(doelWaarde.textContent)
 
-  let huidigDoel = parseFloat(doelInput.value)
-
-  doelMin.addEventListener('click', () => {
+  doelMin.addEventListener('click', async (e) => {
+    e.preventDefault()
     huidigDoel = Math.round((huidigDoel - 0.1) * 10) / 10
     doelWaarde.textContent = huidigDoel.toFixed(1)
-    doelInput.value = huidigDoel.toFixed(1)
-    doelForm.submit()
+
+    await fetch(`/golfer/${golferId}/doel`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `goal_target=${huidigDoel.toFixed(1)}`
+    })
   })
 
-  doelPlus.addEventListener('click', () => {
+  doelPlus.addEventListener('click', async (e) => {
+    e.preventDefault()
     huidigDoel = Math.round((huidigDoel + 0.1) * 10) / 10
     doelWaarde.textContent = huidigDoel.toFixed(1)
-    doelInput.value = huidigDoel.toFixed(1)
-    doelForm.submit()
+
+    await fetch(`/golfer/${golferId}/doel`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `goal_target=${huidigDoel.toFixed(1)}`
+    })
   })
 }
 // end doel hcp

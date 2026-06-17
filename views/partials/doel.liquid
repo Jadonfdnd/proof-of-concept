@@ -5,7 +5,7 @@
     <div class="doel-aanpassen">
       <form action="/golfer/{{ golfer.id }}/doel" method="POST">
         <input type="hidden" name="goal_target" value="{{ golfer.goal_target | minus: 0.1 | round: 1 }}">
-        <button type="submit" class="doel-min">-</button>
+        <button type="submit" class="doel-min" data-golfer-id="{{ golfer.id }}">-</button>
       </form>
 
       <div class="doel-tekst">
@@ -15,7 +15,7 @@
 
       <form action="/golfer/{{ golfer.id }}/doel" method="POST">
         <input type="hidden" name="goal_target" value="{{ golfer.goal_target | plus: 0.1 | round: 1 }}">
-        <button type="submit" class="doel-plus">+</button>
+        <button type="submit" class="doel-plus" data-golfer-id="{{ golfer.id }}">+</button>
       </form>
     </div>
 
