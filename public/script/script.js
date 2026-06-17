@@ -38,3 +38,33 @@ if (closeForm && overlay) {
     overlay.classList.add('hidden')
   })
 }
+
+// Doel handicap met pe
+const doelForm = document.querySelector('#doel-form')
+const doelWaarde = document.querySelector('#doel-waarde')
+const doelInput = document.querySelector('#goal-target-input')
+const doelOpslaan = document.querySelector('#doel-opslaan')
+const doelMin = document.querySelector('#doel-min')
+const doelPlus = document.querySelector('#doel-plus')
+
+if (doelForm && doelOpslaan) {
+  // Enhancement: verberg opslaan knop
+  doelOpslaan.style.display = 'none'
+
+  let huidigDoel = parseFloat(doelInput.value)
+
+  doelMin.addEventListener('click', () => {
+    huidigDoel = Math.round((huidigDoel - 0.1) * 10) / 10
+    doelWaarde.textContent = huidigDoel.toFixed(1)
+    doelInput.value = huidigDoel.toFixed(1)
+    doelForm.submit()
+  })
+
+  doelPlus.addEventListener('click', () => {
+    huidigDoel = Math.round((huidigDoel + 0.1) * 10) / 10
+    doelWaarde.textContent = huidigDoel.toFixed(1)
+    doelInput.value = huidigDoel.toFixed(1)
+    doelForm.submit()
+  })
+}
+// end doel hcp

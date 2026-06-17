@@ -452,3 +452,108 @@ body {
 }
 /* popover end; */
 
+/* doelen start */
+
+.doel {
+  margin-top: 2rem;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  .doel-kaart {
+    background: white;
+    border-radius: var(--r);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .doel-label {
+    font-size: .75rem;
+    color: var(--n-500);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin-bottom: .25rem;
+  }
+
+  .doel-waarde {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--groen-700);
+    margin-bottom: 1.5rem;
+  }
+
+  .doel-paces {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    background: var(--n-100);
+    border-radius: var(--r);
+    padding: 1rem;
+  }
+
+  .pace-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .25rem;
+    padding: .75rem;
+    border-radius: var(--r);
+  }
+
+  .pace-actief {
+    background: white;
+    border: 1.5px solid var(--groen-500);
+    box-shadow: var(--shadow);
+  }
+
+  .pace-label {
+    font-size: .75rem;
+    color: var(--n-500);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+
+  .pace-rondes {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--groen-700);
+  }
+
+  .pace-sub {
+    font-size: .75rem;
+    color: var(--n-500);
+  }
+
+  .pace-maanden {
+    font-size: .75rem;
+    color: var(--n-500);
+  }
+}
+
+.doel-aanpassen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+
+  .doel-min, .doel-plus {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--n-100);
+    background: white;
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+
+    &:hover {
+      border-color: var(--groen-500);
+      color: var(--groen-500);
+    }
+  }
+}
+/* doelen end */

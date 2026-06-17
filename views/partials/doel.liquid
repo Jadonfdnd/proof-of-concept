@@ -1,0 +1,33 @@
+<section class="doel">
+  <h2>Naar je volgende handicap</h2>
+
+  <div class="doel-kaart">
+    <div class="doel-aanpassen">
+      <form action="/golfer/{{ golfer.id }}/doel" method="POST">
+        <input type="hidden" name="goal_target" value="{{ golfer.goal_target | minus: 0.1 | round: 1 }}">
+        <button type="submit" class="doel-min">-</button>
+      </form>
+
+      <div class="doel-tekst">
+        <p class="doel-label">Doel handicap</p>
+        <p class="doel-waarde" id="doel-waarde">{{ golfer.goal_target | round: 1 }}</p>
+      </div>
+
+      <form action="/golfer/{{ golfer.id }}/doel" method="POST">
+        <input type="hidden" name="goal_target" value="{{ golfer.goal_target | plus: 0.1 | round: 1 }}">
+        <button type="submit" class="doel-plus">+</button>
+      </form>
+    </div>
+
+    <div class="doel-paces">
+      {% for pace in golfer.goal_paces %}
+      <div class="pace-item {% if pace.key == 'realistic' %}pace-actief{% endif %}">
+        <p class="pace-label">{{ pace.label }}</p>
+        <p class="pace-rondes">{{ pace.rounds }}</p>
+        <p class="pace-sub">rondes</p>
+        <p class="pace-maanden">±{{ pace.months }} mnd</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

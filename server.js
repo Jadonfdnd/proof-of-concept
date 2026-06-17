@@ -68,8 +68,14 @@ app.get('/golfer/:id', async function (request, response) {
     const status = request.query.status
     console.log('status:', status)
 
+    // was eerst golferdata.data maar nu geparsed
+    const golfer = {
+      ...golferData.data,
+      goal_paces: JSON.parse(golferData.data.goal_paces)
+    }
+
     response.render('golfer.liquid', { 
-      golfer: golferData.data,
+      golfer: golfer,
       rondes: rondesData.data,
       history: handicapData.data,
       milestones: milestonesData.data,
@@ -139,6 +145,23 @@ app.get('/golfer/:id/ronde/:rondeId/bevestiging-ronde', async function (req, res
   })
 })
 // end delete
+
+
+// VOlgende handicap
+app.post('/golfer/:id/doel', async function (req, res) {
+  const id = req.params.id
+
+  await fetch(`https://fdnd-agency.directus.app/items/into_golf_golfers/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      goal_target: req.body.goal_target
+    })
+  })
+
+  res.redirect(303, `/golfer/${id}`)
+})
+// end volgende handicap
 
 
 // als laatst
