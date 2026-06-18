@@ -776,3 +776,8 @@ html {
   animation-timeline: view();
   animation-range: entry 0% entry 20%;
 }
+
+.modal-popover.hidden {
+  display: none;
+  visibility: hidden;
+}
