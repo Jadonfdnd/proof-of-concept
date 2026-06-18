@@ -8,6 +8,7 @@
       {% for golfer in golfers %}
       <li class="golfer-kaart">
         <a href="/golfer/{{ golfer.id }}">
+          <img src="https://fdnd-agency.directus.app/assets/{{ golfer.photo }}" alt="{{ golfer.name }}" loading="lazy">
           <p class="golfer-naam">{{ golfer.name }}</p>
           <p class="golfer-hcp">HCP {{ golfer.handicap }}</p>
         </a>

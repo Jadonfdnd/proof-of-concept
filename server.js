@@ -44,7 +44,7 @@ app.get('/golfer/:id', async function (request, response) {
     const golferData = await golferResponse.json()
 
     // fetch 2 rondes
-    const rondesResponse = await fetch(`https://fdnd-agency.directus.app/items/into_golf_rounds?filter[golfer_id][_eq]=${id}`)
+    const rondesResponse = await fetch(`https://fdnd-agency.directus.app/items/into_golf_rounds?filter[golfer_id][_eq]=${id}&sort=-date&limit=10`)
     const rondesData = await rondesResponse.json()
 
     // fetch 3 - handicap geschiedenis

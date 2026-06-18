@@ -1,3 +1,14 @@
-<nav>
-  <a href="/">Home</a>
+<nav class="nav">
+  <a href="/" class="nav-logo">IntoGolf</a>
+  <details class="nav-menu">
+    <summary class="hamburger">☰</summary>
+    <ul>
+      <li><a href="/">Home</a></li>
+      {% if golfer %}
+      <li><a href="/golfer/{{ golfer.id }}">Mijn progressie</a></li>
+      {% else %}
+      <li><a href="/golfer/1">Mijn progressie</a></li>
+      {% endif %}
+    </ul>
+  </details>
 </nav>

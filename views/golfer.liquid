@@ -6,7 +6,18 @@
   <!-- Profiel header -->
   {% comment %} Divjes weghalen Ul Li {% endcomment %}
   <section class="profiel-header">
-    <h1>{{ golfer.name }}</h1>
+
+    <div class="profiel-hello">
+      <img 
+        src="https://fdnd-agency.directus.app/assets/{{ golfer.photo }}" 
+        alt="{{ golfer.name }}"
+        loading="eager"
+      >
+      <div>
+        <p class="welkom-tekst">Welkom terug,</p>
+        <h1>{{ golfer.name }}</h1>
+      </div>
+    </div>    
 
     <div class="hcp-stats">
 
@@ -50,9 +61,14 @@
     <h2>Doelen</h2>
     <ul>
       {% for milestone in milestones %}
-      <li class="doel-item">
-        <p>{{ milestone.title }}</p>
-        <p>{{ milestone.current }} / {{ milestone.target }}</p>
+      <li class="doel-item {% if milestone.completed %}doel-compleet{% endif %}">
+        <div class="doel-info">
+          <p>{{ milestone.title }}</p>
+          <p class="doel-voortgang">{{ milestone.current }} / {{ milestone.target }}</p>
+        </div>
+        <div class="doel-balk-wrapper">
+          <div class="doel-balk" style="width: {{ milestone.current | times: 100 | divided_by: milestone.target }}%"></div>
+        </div>
       </li>
       {% endfor %}
     </ul>

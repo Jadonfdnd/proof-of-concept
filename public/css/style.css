@@ -136,7 +136,39 @@ body {
 .ronde-baan { font-weight: 700; }
 .ronde-diff { color: var(--groen-500); font-weight: 700; }
 
+.doel-item {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 
+  .doel-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .doel-voortgang {
+    color: var(--n-500);
+    font-size: .875rem;
+  }
+
+  .doel-balk-wrapper {
+    background: var(--n-100);
+    border-radius: 999px;
+    height: 6px;
+    width: 100%;
+  }
+
+  .doel-balk {
+    background: var(--groen-500);
+    border-radius: 999px;
+    height: 6px;
+    max-width: 100%;
+  }
+}
+
+.doel-compleet .doel-balk {
+  background: var(--groen-700);
+}
 
 /* Form enhancement open close hidden */
 #ronde-form.hidden {
@@ -557,3 +589,190 @@ body {
   }
 }
 /* doelen end */
+
+/* img avatar */
+.golfer-kaart img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--r) var(--r) 0 0;
+  margin-bottom: .75rem;
+}
+/* end image avatar */
+
+/* profile intro */
+.profiel-hello {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+
+  img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .welkom-tekst {
+    font-size: .875rem;
+    color: var(--n-500);
+    margin-bottom: 0.25rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+/* end profile intro */
+
+/* Ranking */
+
+.ranking {
+  margin-bottom: 2rem;
+
+  .ranking-categorie {
+    background: white;
+    border-radius: var(--r);
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+    h3 {
+      font-size: .75rem;
+      color: var(--n-500);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: .75rem;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font-size: .9rem;
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--n-100);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:first-child {
+        font-weight: 700;
+        color: var(--groen-700);
+      }
+    }
+  }
+}
+
+/* end ranking */
+
+/* view transitions */
+@view-transition {
+  navigation: auto;
+}
+/* End view transitions */
+
+/* SCROLL  */
+html {
+  scroll-behavior: smooth;
+}
+
+/* FOCUS VISIBLE */
+:focus-visible {
+  outline: 2px solid var(--groen-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/*REDUCED MOTION  */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*  */
+/*  BACK TO TOP*/
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--groen-700);
+  color: white;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: none;
+  place-items: center;
+  z-index: 99;
+
+  &:hover {
+    background: var(--groen-500);
+  }
+}
+
+.back-to-top.zichtbaar {
+  display: grid;
+}
+
+/*  VIEW TRANSITION MODAL */
+.modal-popover {
+  view-transition-name: modal;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(1rem); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(1rem); }
+}
+
+::view-transition-old(modal) {
+  animation: fade-out 220ms ease;
+}
+
+::view-transition-new(modal) {
+  animation: fade-in 220ms ease;
+}
+
+
+/* SCROLL DRIVEN ANIMATION  */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat,
+.ronde-item,
+.doel-item,
+.ranking-categorie,
+.doel-kaart {
+  animation: fade-up linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 20%;
+}
