@@ -8,11 +8,10 @@
   <section class="profiel-header">
 
     <div class="profiel-hello">
-      <img 
-        src="https://fdnd-agency.directus.app/assets/{{ golfer.photo }}" 
-        alt="{{ golfer.name }}"
-        loading="eager"
-      >
+        <img src="https://fdnd-agency.directus.app/assets/{{ golfer.photo }}?width=128&height=128&fit=cover&format=webp" 
+          alt="{{ golfer.name }}"
+          loading="eager">
+        
       <div>
         <p class="welkom-tekst">Welkom terug,</p>
         <h1>{{ golfer.name }}</h1>
